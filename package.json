@@ -1,0 +1,31 @@
+{
+  "name": "lab-aa-calc",
+  "license": "LAGPL3.0-or-later",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vite build",
+    "check": "vue-tsc --noEmit"
+  },
+  "engines": {
+    "node": "^20",
+    "npm": "^9"
+  },
+  "dependencies": {
+    "vue": "^3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@vitejs/plugin-vue": "^4",
+    "@vitejs/plugin-vue-jsx": "^3",
+    "@vue/tsconfig": "^0",
+    "sass": "^1",
+    "tslib": "^2",
+    "typescript": "~4.8",
+    "vite": "^4",
+    "vue-tsc": "^1"
+  }
+}
