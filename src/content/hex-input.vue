@@ -3,7 +3,7 @@
 
     const hexPattern = /^(?:[a-f0-9]{3}|[a-f0-9]{6})$/i;
 
-    const isValidHex = (value: string) => hexPattern.test(value);
+    const isValidHex = (value: string): boolean => hexPattern.test(value);
 
     const setValues = (targetRef: Ref, targetNum: Ref) =>
         (newValue: string): void => {
@@ -14,24 +14,24 @@
         }
 
     const foregroundRawRef = ref('000000');
-    const foregroundNumRef = ref(0x000000);
+    const foregroundValRef = ref(0x000000);
 
     const backgroundRawRef = ref('ffffff');
-    const backgroundNumRef = ref(0xffffff);
+    const backgroundValRef = ref(0xffffff);
 
     const foreground = computed({
         get: () => foregroundRawRef.value,
-        set: setValues(foregroundRawRef, foregroundNumRef),
+        set: setValues(foregroundRawRef, foregroundValRef),
     });
     const background = computed({
         get: () => backgroundRawRef.value,
-        set: setValues(backgroundRawRef, backgroundNumRef),
+        set: setValues(backgroundRawRef, backgroundValRef),
     });
 
     const foregroundValid = computed(() => isValidHex(foreground.value));
     const backgroundValid = computed(() => isValidHex(background.value));
 
-    const submitHexes = (event: Event) => {
+    const submitHexes = (event: Event): void => {
         if (!foregroundValid.value || !backgroundValid.value) {
             event.preventDefault();
         }
@@ -40,11 +40,10 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <form @submit.prevent="submitHexes">
-        <div>
+        <div id="foreground">
             <label for="foreground">
                 Foreground:
             </label><input
-                id="foreground"
                 name="foreground"
                 v-model="foreground"
                 maxlength="6"
@@ -52,11 +51,11 @@
                 :class="{'invalid-input': !foregroundValid}"
                 @input="submitHexes"
             />
-        </div><div>
+        </div>
+        <div id="background">
             <label for="background">
                 Background:
             </label><input
-                id="background"
                 name="background"
                 v-model="background"
                 maxlength="6"
