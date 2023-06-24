@@ -23,6 +23,7 @@
         </div>
         <div id="renderer" :style="{
             'color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
+            'border-color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
             'background-color': `rgb(${colors.background.R}, ${colors.background.G}, ${colors.background.B})`,
         }">
             <span id="text-small">Lorem ipsum dolor sit amet</span>
