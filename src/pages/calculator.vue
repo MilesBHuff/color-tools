@@ -17,101 +17,57 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <div id="calculator">
-        <div id="forms">
+        <div id="input">
             <HexInput @submit="handleSubmission"/>
-            <WcagResults :foreground="colors.foreground" :background="colors.background"/>
         </div>
-        <div id="renderer" :style="{
-            'color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
-            'border-color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
-            'background-color': `rgb(${colors.background.R}, ${colors.background.G}, ${colors.background.B})`,
-        }">
-            <span id="text-small">Lorem ipsum dolor sit amet</span>
-            <span id="text-large">consectetur adipiscing elit</span>
+        <div id="output">
+            <WcagResults :foreground="colors.foreground" :background="colors.background"/>
+            <div id="renderer" :style="{
+                'color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
+                'border-color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
+                'background-color': `rgb(${colors.background.R}, ${colors.background.G}, ${colors.background.B})`,
+            }">
+                <span id="text-small">Lorem ipsum dolor sit amet</span>
+                <span id="text-large">consectetur adipiscing elit</span>
+            </div>
         </div>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-<style lang="scss">
-    .invalid-input {
-        border-color: #f00 !important;
-    }
+<style lang="scss" scoped>
 
     #calculator {
         display: flex;
         flex-direction: row;
         gap: 1rem;
         margin: 1rem;
+    }
 
-        >#forms {
-            display: grid;
-            grid: 'L I T';
-            gap: 0.5rem 1ch;
-            height: min-content;
-            width: fit-content;
+    #output, #input {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-            >form {
-                display: contents;
+    #renderer {
+        border-radius: 0.25rem;
+        padding: 2rem;
+        height: min-content;
+        width: fit-content;
 
-                >div {
-                    display: contents;
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
 
-                    >label {
-                        text-align: right;
-                        cursor: text;
-                    }
+        display: flex;
+        flex-direction: column;
+        gap: 1ex;
 
-                    >input {
-                        cursor: text;
-
-                        width: 6.25ch;
-                        padding: 0 0.5ch;
-
-                        border-radius: 0.25rem;
-                        font-family: monospace;
-
-                        color: #000;
-                        background-color: #fff;
-                        border: 1px solid #7f7f7f;
-
-                        &:disabled {
-                            border-color: transparent;
-                            background-color: transparent;
-                            font-weight: bold;
-                        }
-                    }
-
-                    >span {
-                        font-family: monospace;
-                        height: 0;
-                        line-height: 1;
-                        text-align: right;
-                    }
-                }
-            }
+        >#text-small {
+            font-size: 12pt;
         }
-
-        >#renderer {
-            padding: 1rem;
-            border-radius: 0.25rem;
-            padding: 2rem;
-            height: min-content;
-            width: fit-content;
-
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #000;
-
-            display: flex;
-            flex-direction: column;
-            gap: 1ex;
-
-            >#text-small {
-                font-size: 12pt;
-            }
-            >#text-large {
-                font-size: 18pt;
-            }
+        >#text-large {
+            font-size: 18pt;
         }
     }
 </style>

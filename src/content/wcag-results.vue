@@ -97,4 +97,47 @@
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
+    form {
+        display: grid;
+        grid: 'L I T';
+        gap: 0.5rem 1ch;
+        height: min-content;
+        width: fit-content;
+
+        >div {
+            display: contents;
+
+            >label {
+                text-align: right;
+                cursor: text;
+            }
+
+            >input {
+                cursor: text;
+
+                width: 6.25ch;
+                padding: 0 0.5ch;
+
+                border-radius: 0.25rem;
+                font-family: monospace;
+
+                color: #000;
+                background-color: #fff;
+                border: 1px solid #7f7f7f;
+
+                &:disabled {
+                    border-color: transparent;
+                    background-color: transparent;
+                    font-weight: bold;
+                }
+            }
+
+            >span {
+                font-family: monospace;
+                height: 0;
+                line-height: 1;
+                text-align: right;
+            }
+        }
+    }
 </style>
