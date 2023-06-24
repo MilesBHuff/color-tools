@@ -14,7 +14,7 @@
         rgbToLab(props.background).l / 100,
     ));
 
-    const calcScore = (contrast: number, aa: number, aaa: number) => {
+    const calcScore = (contrast: number, aa: number, aaa: number): string => {
         switch(contrast) {
             case aaa:
                 return 'AAA';
