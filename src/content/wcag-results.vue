@@ -9,7 +9,7 @@
     }>();
 
     const contrastRatio = luminanceToContrast(
-        rgbToLab(props.foreground).l,
+        rgbaToLab(props.foreground).l,
         rgbToLab(props.background).l,
     );
 
