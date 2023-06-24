@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import {luminanceToContrast} from '@/functions/luminanceToContrast.function';
-    import {rgbToLab} from '@/functions/rgbToLab.function';
-    import type {RgbType} from '@/types/color-models.type';
+    import {luminanceToContrast} from '$/functions/luminanceToContrast.function';
+    import {rgbToLab} from '$/functions/rgbToLab.function';
+    import type {RgbType} from '$/types/color-models.type';
 
     const props = defineProps<{
         foreground: RgbType,
@@ -9,7 +9,7 @@
     }>();
 
     const contrastRatio = luminanceToContrast(
-        rgbaToLab(props.foreground).l,
+        rgbToLab(props.foreground).l,
         rgbToLab(props.background).l,
     );
 

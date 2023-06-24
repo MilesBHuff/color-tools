@@ -41,8 +41,11 @@
         // "moduleSuffixes": null,
         "noResolve": false,
         "paths": {
-            "@/*": [
+            "$/*": [
                 "./src/*"
+            ],
+            "#/*": [
+                "./node_modules/*"
             ]
         },
         "resolveJsonModule": true,

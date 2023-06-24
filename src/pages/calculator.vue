@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import HexInput from '@/content/hex-input.vue';
-    import WcagResults from '@/content/wcag-results.vue';
-    import type {RgbType} from '@/types/color-models.type';
-    import {reactive} from 'vue';
+    import HexInput from '$/content/hex-input.vue';
+    import WcagResults from '$/content/wcag-results.vue';
+    import type {RgbType} from '$/types/color-models.type';
+    import {reactive} from '#/vue';
 
     const colors = reactive({
         foreground: {r: 0x00, g: 0x00, b: 0x00} as RgbType,

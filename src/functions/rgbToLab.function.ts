@@ -1,5 +1,5 @@
-import type {LabType, RgbType} from "@/types/color-models.type";
-import fantasyRgbToLab from "@fantasy-color/rgb-to-lab";
+import type {LabType, RgbType} from "$/types/color-models.type";
+import fantasyRgbToLab from "#/@fantasy-color/rgb-to-lab";
 
 /** Convert RGB into CIELAB. */
 export const rgbToLab = (rgb: RgbType): LabType => {

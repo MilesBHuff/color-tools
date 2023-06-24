@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    import {stringToRgb} from '@/functions/stringToRgb.function';
-    import type {RgbType} from '@/types/color-models.type';
-    import {computed, reactive} from 'vue';
+    import {stringToRgb} from '$/functions/stringToRgb.function';
+    import type {RgbType} from '$/types/color-models.type';
+    import {computed, reactive} from '#/vue';
 
     interface GroundRefType {
         raw: string,

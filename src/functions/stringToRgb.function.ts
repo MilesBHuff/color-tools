@@ -1,5 +1,5 @@
-import type {RgbType} from '@/types/color-models.type';
-import {threeToSix} from '@/functions/threeToSix.function';
+import type {RgbType} from '$/types/color-models.type';
+import {threeToSix} from '$/functions/threeToSix.function';
 
 export const stringToRgb = (input: string): RgbType => {
     if(input.length === 3) input = threeToSix(input);
