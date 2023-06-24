@@ -13,11 +13,13 @@
         rgbToLab(props.foreground),
         rgbToLab(props.background),
     ));
+    // const contrastDeviance = 7.05 / 4; // The difference between 21-scaled CIEDE2000 and WCAG for 50% RGB gray (#7f7f7f)
+    const contrastDeviance = Math.sqrt(3); // This is eerily close to the above.
 
     const calcScore = (contrast: number, aa: number, aaa: number): string =>
         contrast >= aaa ? 'AAA' : contrast >= aa ? 'AA' : 'Fail';
-    const scoreSmall = computed(() => calcScore(contrast.value, 4.5, 7.0));
-    const scoreLarge = computed(() => calcScore(contrast.value, 3.0, 4.5));
+    const scoreSmall = computed(() => calcScore(contrast.value, 4.5 * contrastDeviance, 7.0 * contrastDeviance));
+    const scoreLarge = computed(() => calcScore(contrast.value, 3.0 * contrastDeviance, 4.5 * contrastDeviance));
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
