@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import {luminanceToContrast} from '$/functions/luminanceToContrast.function';
     import {rgbToLab} from '$/functions/rgbToLab.function';
+    import {round} from '$/functions/round.function';
     import type {RGBColor} from 'color-diff';
     import {computed} from 'vue';
 
@@ -38,7 +39,7 @@
     <form id="results">
         <div>
             <label for="ratio">Ratio:</label>
-            <input id="ratio" name="ratio" disabled v-model="contrast"/>
+            <input id="ratio" name="ratio" disabled :value="round(contrast)"/>
             <span>
                 Min=1
                 <br/>
@@ -47,20 +48,20 @@
         </div>
         <div>
             <label for="score-small">Score (Small):</label>
-            <input id="score-small" name="score-small" disabled v-model="scoreSmall"/>
+            <input id="score-small" name="score-small" disabled :value="scoreSmall"/>
             <span>
-                AA={{Math.round(smallThresholds.aa * 100) / 100}}
+                AA={{round(smallThresholds.aa)}}
                 <br/>
-                AAA={{Math.round(smallThresholds.aaa * 100) / 100}}
+                AAA={{round(smallThresholds.aaa)}}
             </span>
         </div>
         <div>
             <label for="score-large">Score (Large):</label>
-            <input id="score-large" name="score-large" disabled v-model="scoreLarge"/>
+            <input id="score-large" name="score-large" disabled :value="scoreLarge"/>
             <span>
-                AA={{Math.round(largeThresholds.aa * 100) / 100}}
+                AA={{round(largeThresholds.aa)}}
                 <br/>
-                AAA={{Math.round(largeThresholds.aaa * 100) / 100}}
+                AAA={{round(largeThresholds.aaa)}}
             </span>
         </div>
     </form>
