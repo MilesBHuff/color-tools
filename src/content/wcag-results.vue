@@ -123,7 +123,7 @@
 
             >input {
                 cursor: text;
-                width: 4.25ch;
+                width: 5.25ch;
             }
 
             >span {
