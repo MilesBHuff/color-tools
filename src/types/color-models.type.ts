@@ -3,3 +3,8 @@ export interface RgbType {
     g: number,
     b: number,
 };
+export interface LabType {
+    l: number,
+    a: number,
+    b: number,
+};
