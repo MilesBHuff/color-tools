@@ -58,9 +58,12 @@
 
                     >label {
                         text-align: right;
+                        cursor: text;
                     }
 
                     >input {
+                        cursor: text;
+
                         border-radius: 0.25rem;
                         font-family: monospace;
 
