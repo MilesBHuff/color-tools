@@ -1,6 +1,6 @@
 {
     "extends": [
-        "@vue/tsconfig/tsconfig.node.json"
+        "./node_modules/@vue/tsconfig/tsconfig.json"
     ],
     "include": [
         "vite.config.*",
