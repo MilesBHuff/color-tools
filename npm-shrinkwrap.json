@@ -12,11 +12,12 @@
         "vue": "^3"
       },
       "devDependencies": {
-        "@fantasy-color/rgb-to-lab": "^2",
+        "@types/color-diff": "^1",
         "@types/node": "^20",
         "@vitejs/plugin-vue": "^4",
         "@vitejs/plugin-vue-jsx": "^3",
         "@vue/tsconfig": "^0",
+        "color-diff": "^1",
         "sass": "^1",
         "tslib": "^2",
         "typescript": "~4.8",
@@ -491,27 +492,6 @@
         "node": ">=12"
       }
     },
-    "node_modules/@fantasy-color/rgb-to-lab": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/@fantasy-color/rgb-to-lab/-/rgb-to-lab-2.1.0.tgz",
-      "integrity": "sha512-l8pCSz98qPZc7nqL7ooP3qoRIHC9AvfhxO8Bs1iLi2DJA2QauFH6xy20ODiiwPHinjL+ZyO4+9Rs33we2w1MzA==",
-      "dev": true,
-      "dependencies": {
-        "@fantasy-color/types": "^2.1.0"
-      },
-      "engines": {
-        "node": ">=12.13.0"
-      }
-    },
-    "node_modules/@fantasy-color/types": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/@fantasy-color/types/-/types-2.1.0.tgz",
-      "integrity": "sha512-OREWZch2RV8wYE8IFBxMwgE2rvM4QRC8dMgmvrhpNBeeK+acvBTxaahQ+KbXjkyLMxaXf2GhH+krAPqBGTDF7g==",
-      "dev": true,
-      "engines": {
-        "node": ">=12.13.0"
-      }
-    },
     "node_modules/@jridgewell/gen-mapping": {
       "version": "0.3.3",
       "resolved": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz",
@@ -563,6 +543,12 @@
       "version": "1.4.14",
       "resolved": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz",
       "integrity": "sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==",
+      "dev": true
+    },
+    "node_modules/@types/color-diff": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/@types/color-diff/-/color-diff-1.2.1.tgz",
+      "integrity": "sha512-iemOGPqMODUJyDbd8TVV9vdaHfbO1Z7rQhql1umt75Z7NUminF7MXvWaNxh5+aizZpeei2WFGGrpmOocuqh8oQ==",
       "dev": true
     },
     "node_modules/@types/node": {
@@ -968,6 +954,12 @@
       "dependencies": {
         "color-name": "1.1.3"
       }
+    },
+    "node_modules/color-diff": {
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/color-diff/-/color-diff-1.4.0.tgz",
+      "integrity": "sha512-4oDB/o78lNdppbaqrg0HjOp7pHmUc+dfCxWKWFnQg6AB/1dkjtBDop3RZht5386cq9xBUDRvDvSCA7WUlM9Jqw==",
+      "dev": true
     },
     "node_modules/color-name": {
       "version": "1.1.3",

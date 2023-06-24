@@ -1,17 +1,17 @@
 <script setup lang="ts">
-    import {computed} from '#/vue';
     import {luminanceToContrast} from '$/functions/luminanceToContrast.function';
     import {rgbToLab} from '$/functions/rgbToLab.function';
-    import type {RgbType} from '$/types/color-models.type';
+    import type {RGBColor} from 'color-diff';
+    import {computed} from 'vue';
 
     const props = defineProps<{
-        foreground: RgbType,
-        background: RgbType,
+        foreground: RGBColor,
+        background: RGBColor,
     }>();
 
     const contrast = computed(() => luminanceToContrast(
-        rgbToLab(props.foreground).l / 100,
-        rgbToLab(props.background).l / 100,
+        rgbToLab(props.foreground).L / 100,
+        rgbToLab(props.background).L / 100,
     ));
 
     const calcScore = (contrast: number, aa: number, aaa: number): string => {

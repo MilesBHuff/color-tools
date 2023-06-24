@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import {stringToRgb} from '$/functions/stringToRgb.function';
-    import type {RgbType} from '$/types/color-models.type';
-    import {computed, reactive} from '#/vue';
+    import type {RGBColor} from 'color-diff';
+    import {computed, reactive} from 'vue';
 
     interface GroundRefType {
         raw: string,
-        rgb: RgbType,
+        rgb: RGBColor,
     }
 
     const hexPattern = /^(?:[a-f0-9]{3}|[a-f0-9]{6})$/i;
@@ -22,11 +22,11 @@
 
     const foregroundRef: GroundRefType = reactive({
         raw: '000000',
-        rgb: {r: 0x00, g: 0x00, b: 0x00},
+        rgb: {R: 0x00, G: 0x00, B: 0x00},
     });
     const backgroundRef: GroundRefType = reactive({
         raw: 'ffffff',
-        rgb: {r: 0xff, g: 0xff, b: 0xff},
+        rgb: {R: 0xff, G: 0xff, B: 0xff},
     });
 
     const foreground = computed({

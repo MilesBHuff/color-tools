@@ -1,15 +1,15 @@
 <script setup lang="ts">
     import HexInput from '$/content/hex-input.vue';
     import WcagResults from '$/content/wcag-results.vue';
-    import type {RgbType} from '$/types/color-models.type';
-    import {reactive} from '#/vue';
+    import type {RGBColor} from 'color-diff';
+    import {reactive} from 'vue';
 
     const colors = reactive({
-        foreground: {r: 0x00, g: 0x00, b: 0x00} as RgbType,
-        background: {r: 0xff, g: 0xff, b: 0xff} as RgbType,
+        foreground: {R: 0x00, G: 0x00, B: 0x00} as RGBColor,
+        background: {R: 0xff, G: 0xff, B: 0xff} as RGBColor,
     });
 
-    const handleSubmission = (data: {foreground: RgbType, background: RgbType}) => {
+    const handleSubmission = (data: {foreground: RGBColor, background: RGBColor}) => {
         colors.foreground = data.foreground;
         colors.background = data.background;
     };
@@ -22,8 +22,8 @@
             <WcagResults :foreground="colors.foreground" :background="colors.background"/>
         </div>
         <div id="renderer" :style="{
-            'color': `rgb(${colors.foreground.r}, ${colors.foreground.g}, ${colors.foreground.b})`,
-            'background-color': `rgb(${colors.background.r}, ${colors.background.g}, ${colors.background.b})`,
+            'color': `rgb(${colors.foreground.R}, ${colors.foreground.G}, ${colors.foreground.B})`,
+            'background-color': `rgb(${colors.background.R}, ${colors.background.G}, ${colors.background.B})`,
         }">
             <span id="text-small">Lorem ipsum dolor sit amet</span>
             <span id="text-large">consectetur adipiscing elit</span>

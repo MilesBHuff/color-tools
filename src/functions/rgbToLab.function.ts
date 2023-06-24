@@ -1,12 +1,11 @@
-import type {LabType, RgbType} from "$/types/color-models.type";
-import fantasyRgbToLab from "#/@fantasy-color/rgb-to-lab";
+import {rgba_to_lab, type RGBColor, type LabColor} from 'color-diff';
 
 /** Convert RGB into CIELAB. */
-export const rgbToLab = (rgb: RgbType): LabType => {
-    const lab = fantasyRgbToLab({
-        red: rgb.r,
-        green: rgb.g,
-        blue: rgb.b,
+export const rgbToLab = (rgb: RGBColor): LabColor => {
+    const lab = rgba_to_lab({
+        R: rgb.R,
+        G: rgb.G,
+        B: rgb.B,
     });
-    return {l: lab.luminance, a: lab.a, b: lab.b};
+    return {L: lab.L, a: lab.a, b: lab.b};
 }
