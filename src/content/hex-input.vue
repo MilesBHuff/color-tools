@@ -1,40 +1,54 @@
 <script setup lang="ts">
-    import {computed, ref, type Ref} from 'vue';
+    import {computed, defineEmits, reactive} from 'vue';
 
     const hexPattern = /^(?:[a-f0-9]{3}|[a-f0-9]{6})$/i;
 
     const isValidHex = (value: string): boolean => hexPattern.test(value);
 
-    const setValues = (targetRef: Ref, targetNum: Ref) =>
-        (newValue: string): void => {
-            targetRef.value = newValue;
-            if(hexPattern.test(newValue)) {
-                targetNum.value = parseInt(newValue, 16);
+    interface GroundRefType {
+        raw: string,
+        value: number,
+    }
+
+    const setValues = (targetRef: GroundRefType) =>
+        (input: string): void => {
+            targetRef.raw = input;
+            if(hexPattern.test(input)) {
+                targetRef.value = parseInt(input, 16);
             }
         }
 
-    const foregroundRawRef = ref('000000');
-    const foregroundValRef = ref(0x000000);
-
-    const backgroundRawRef = ref('ffffff');
-    const backgroundValRef = ref(0xffffff);
+    const foregroundRef: GroundRefType = reactive({
+        raw: '000000',
+        value: 0x000000,
+    });
+    const backgroundRef: GroundRefType = reactive({
+        raw: 'ffffff',
+        value: 0xffffff,
+    });
 
     const foreground = computed({
-        get: () => foregroundRawRef.value,
-        set: setValues(foregroundRawRef, foregroundValRef),
+        get: () => foregroundRef.raw,
+        set: setValues(foregroundRef),
     });
     const background = computed({
-        get: () => backgroundRawRef.value,
-        set: setValues(backgroundRawRef, backgroundValRef),
+        get: () => backgroundRef.raw,
+        set: setValues(backgroundRef),
     });
 
     const foregroundValid = computed(() => isValidHex(foreground.value));
     const backgroundValid = computed(() => isValidHex(background.value));
 
+    const emit = defineEmits(['submit']);
+
     const submitHexes = (event: Event): void => {
-        if (!foregroundValid.value || !backgroundValid.value) {
-            event.preventDefault();
+        if(!(foregroundValid.value && backgroundValid.value)) {
+            return event.preventDefault();
         }
+        emit('submit', {
+            foreground: foregroundRef.value,
+            background: backgroundRef.value,
+        });
     }
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->

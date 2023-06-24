@@ -1,15 +1,25 @@
 <script setup lang="ts">
     import HexInput from '@/content/hex-input.vue';
     import WcagResults from '@/content/wcag-results.vue';
+
+    import {ref} from 'vue';
+
+    const foregroundColor = ref('#000');
+    const backgroundColor = ref('#fff');
+
+    const handleSubmission = (data: {foreground: number, background: number}) => {
+        foregroundColor.value = '#' + data.foreground.toString(16);
+        backgroundColor.value = '#' + data.background.toString(16);
+    };
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <div id="calculator">
         <div id="forms">
-            <HexInput/>
-            <WcagResults/>
+            <HexInput @submit="handleSubmission"/>
+            <WcagResults :foreground="foregroundColor" :background="backgroundColor"/>
         </div>
-        <div id="renderer">
+        <div id="renderer" :style="{color: foregroundColor, 'background-color': backgroundColor}">
             <span id="text-small">Lorem ipsum dolor sit amet</span>
             <span id="text-large">consectetur adipiscing elit</span>
         </div>
