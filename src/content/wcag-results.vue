@@ -16,18 +16,18 @@
     const backgroundLab = computed(() => rgbToLab(props.background));
 
     const enum MethodType {
-        WCAG = 0,
-        Lab_WCAG = 1,
+        WCAG_RGB = 0,
+        WCAG_Lab = 1,
         CIEDE2000 = 2,
     }
-    const method: Ref<MethodType> = ref(MethodType.WCAG);
+    const method: Ref<MethodType> = ref(MethodType.WCAG_RGB);
 
     const contrast = computed(() => {switch(method.value) {
 
-        case MethodType.WCAG:
+        case MethodType.WCAG_RGB:
             return rgbToContrast(props.foreground, props.background);
 
-        case MethodType.Lab_WCAG:
+        case MethodType.WCAG_Lab:
             return labToContrast(foregroundLab.value, backgroundLab.value);
 
         case MethodType.CIEDE2000:
@@ -35,10 +35,10 @@
     }});
     const contrastDeviance = computed(() => {switch(method.value) {
 
-        case MethodType.WCAG:
+        case MethodType.WCAG_RGB:
             return 1;
 
-        case MethodType.Lab_WCAG:
+        case MethodType.WCAG_Lab:
             return 1.92 / 4.54; // The difference between Lab-luminance contrast-ratio and WCAG-luminance contrast-ratio for #767676, the gray closest to a 4.5 CR in WCAG.
 
         case MethodType.CIEDE2000:
@@ -69,8 +69,8 @@
         <div id="method">
             <label for="method">Method:</label>
             <select name="method" v-model="method" required>
-                <option :value="MethodType.WCAG">WCAG</option>
-                <option :value="MethodType.Lab_WCAG">Lab WCAG</option>
+                <option :value="MethodType.WCAG_RGB">WCAG (RGB)</option>
+                <option :value="MethodType.WCAG_Lab">WCAG (Lab)</option>
                 <option :value="MethodType.CIEDE2000">CIEDE2000</option>
             </select>
             <span></span>
