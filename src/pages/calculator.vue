@@ -64,6 +64,9 @@
                     >input {
                         cursor: text;
 
+                        width: 6.25ch;
+                        padding: 0 0.5ch;
+
                         border-radius: 0.25rem;
                         font-family: monospace;
 
