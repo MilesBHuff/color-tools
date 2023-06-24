@@ -10,8 +10,8 @@
     }>();
 
     const contrast = computed(() => luminanceToContrast(
-        rgbToLab(props.foreground).L / 100,
-        rgbToLab(props.background).L / 100,
+        rgbToLab(props.foreground),
+        rgbToLab(props.background),
     ));
 
     const calcScore = (contrast: number, aa: number, aaa: number): string => {

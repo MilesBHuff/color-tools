@@ -1,6 +1,7 @@
-/** Convert luminance to contrast, per WCAG. */
-export const luminanceToContrast = (L1: number, L2: number): number => {
-    if (L1 > L2) return oneWayContrast(L1, L2);
-    return oneWayContrast(L2, L1);
+import {diff, type LabColor} from 'color-diff';
+export const luminanceToContrast = (L1: LabColor, L2: LabColor): number => {
+    let contrast: number = diff(L1, L2);
+    contrast *= 0.21; // Scale to WCAG
+    contrast = Math.round(contrast * 100) / 100; // Round past two decimal places
+    return contrast;
 };
-const oneWayContrast = (L1: number, L2: number): number => (L1 + 0.05) / (L2 + 0.05);
