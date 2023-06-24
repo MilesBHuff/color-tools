@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    import {computed} from '#/vue';
     import {luminanceToContrast} from '$/functions/luminanceToContrast.function';
     import {rgbToLab} from '$/functions/rgbToLab.function';
     import type {RgbType} from '$/types/color-models.type';
@@ -8,22 +9,31 @@
         background: RgbType,
     }>();
 
-    const contrastRatio = luminanceToContrast(
+    const contrastRatio = computed(() => luminanceToContrast(
         rgbToLab(props.foreground).l,
         rgbToLab(props.background).l,
-    );
+    ));
 
-    let scoreSmall = 'Fail';
-    let scoreLarge = 'Fail';
-    switch(contrastRatio) {
-        case 3.0:
-            scoreLarge = 'AA';
-        case 4.5:
-            scoreLarge = 'AAA';
-            scoreSmall = 'AA';
-        case 7.0:
-            scoreSmall = 'AAA';
-    }
+    const scoreSmall = computed(() => {
+        switch(contrastRatio.value) {
+            case 7.0:
+                return 'AAA';
+            case 4.5:
+                return 'AA';
+            default:
+                return 'Fail';
+        }
+    });
+    const scoreLarge = computed(() => {
+        switch(contrastRatio.value) {
+            case 4.5:
+                return 'AAA';
+            case 3.0:
+                return 'AA';
+            default:
+                return 'Fail';
+        }
+    });
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
