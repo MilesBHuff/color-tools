@@ -13,8 +13,7 @@
         rgbToLab(props.foreground),
         rgbToLab(props.background),
     ));
-    const contrastDeviance = 7.05 / 4; // The difference between 21-scaled CIEDE2000 and WCAG for 50% RGB gray (#7f7f7f)
-    // const contrastDeviance = Math.sqrt(3); // This is eerily close to the above.
+    const contrastDeviance = 7.72 / 4; // The difference between 21-scaled CIEDE2000 and WCAG for 50% RGB gray (#7f7f7f)
 
     interface ThresholdType {
         aa: number,
