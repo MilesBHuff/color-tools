@@ -66,27 +66,27 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <form id="results">
-        <div>
+        <div id="ratio">
             <label for="ratio">Ratio:</label>
-            <input id="ratio" name="ratio" disabled :value="round(contrast)"/>
+            <input name="ratio" disabled :value="round(contrast)"/>
             <span>
                 Min=1
                 <br/>
                 Max=21
             </span>
         </div>
-        <div>
+        <div id="score-small">
             <label for="score-small">Score (Small):</label>
-            <input id="score-small" name="score-small" disabled :value="scoreSmall"/>
+            <input name="score-small" disabled :value="scoreSmall"/>
             <span>
                 AA={{round(smallThresholds.aa)}}
                 <br/>
                 AAA={{round(smallThresholds.aaa)}}
             </span>
         </div>
-        <div>
+        <div id="score-large">
             <label for="score-large">Score (Large):</label>
-            <input id="score-large" name="score-large" disabled :value="scoreLarge"/>
+            <input name="score-large" disabled :value="scoreLarge"/>
             <span>
                 AA={{round(largeThresholds.aa)}}
                 <br/>
