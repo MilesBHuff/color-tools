@@ -9,38 +9,30 @@
         background: RgbType,
     }>();
 
-    const contrastRatio = computed(() => luminanceToContrast(
+    const contrast = computed(() => luminanceToContrast(
         rgbToLab(props.foreground).l,
         rgbToLab(props.background).l,
     ));
 
-    const scoreSmall = computed(() => {
-        switch(contrastRatio.value) {
-            case 7.0:
+    const calcScore = (contrast: number, aa: number, aaa: number) => {
+        switch(contrast) {
+            case aaa:
                 return 'AAA';
-            case 4.5:
+            case aa:
                 return 'AA';
             default:
                 return 'Fail';
         }
-    });
-    const scoreLarge = computed(() => {
-        switch(contrastRatio.value) {
-            case 4.5:
-                return 'AAA';
-            case 3.0:
-                return 'AA';
-            default:
-                return 'Fail';
-        }
-    });
+    }
+    const scoreSmall = computed(() => calcScore(contrast.value, 4.5, 7.0));
+    const scoreLarge = computed(() => calcScore(contrast.value, 3.0, 4.5));
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <form id="results">
         <div>
             <label for="ratio">Ratio:</label>
-            <input id="ratio" name="ratio" disabled v-model="contrastRatio"/>
+            <input id="ratio" name="ratio" disabled v-model="contrast"/>
         </div>
         <div>
             <label for="score-small">Score (Small):</label>
