@@ -38,13 +38,18 @@
         set: setValues(backgroundRef),
     });
 
-    const foregroundValid = computed(() => isValidHex(foreground.value));
-    const backgroundValid = computed(() => isValidHex(background.value));
+    const valid = computed(() => ({
+        foreground: isValidHex(foreground.value),
+        background: isValidHex(background.value),
+    }));
 
     const emit = defineEmits(['submit']);
 
     const submitHexes = (event: Event): void => {
-        if(!(foregroundValid.value && backgroundValid.value)) {
+        if(!(
+            valid.value.foreground &&
+            valid.value.background
+        )) {
             return event.preventDefault();
         }
         emit('submit', {
@@ -64,7 +69,7 @@
                 v-model="foreground"
                 maxlength="6"
                 required
-                :class="{'invalid-input': !foregroundValid}"
+                :class="{'invalid-input': !valid.foreground}"
                 @input="submitHexes"
             />
         </div>
@@ -76,7 +81,7 @@
                 v-model="background"
                 maxlength="6"
                 required
-                :class="{'invalid-input': !backgroundValid}"
+                :class="{'invalid-input': !valid.background}"
                 @input="submitHexes"
             />
         </div>
