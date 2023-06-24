@@ -14,16 +14,8 @@
         rgbToLab(props.background),
     ));
 
-    const calcScore = (contrast: number, aa: number, aaa: number): string => {
-        switch(contrast) {
-            case aaa:
-                return 'AAA';
-            case aa:
-                return 'AA';
-            default:
-                return 'Fail';
-        }
-    }
+    const calcScore = (contrast: number, aa: number, aaa: number): string =>
+        contrast >= aaa ? 'AAA' : contrast >= aa ? 'AA' : 'Fail';
     const scoreSmall = computed(() => calcScore(contrast.value, 4.5, 7.0));
     const scoreLarge = computed(() => calcScore(contrast.value, 3.0, 4.5));
 </script>
