@@ -22,7 +22,7 @@
     "@vitejs/plugin-vue": "^4",
     "@vitejs/plugin-vue-jsx": "^3",
     "@vue/tsconfig": "^0",
-    "color-diff": "^1",
+    "rgb-lab-conversion": "^2",
     "sass": "^1",
     "tslib": "^2",
     "typescript": "~4.8",
