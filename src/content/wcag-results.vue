@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {luminanceToContrast} from '$/functions/luminanceToContrast.function';
+    import {labToDifference} from '$/functions/labToDifference.function';
     import {rgbToLab} from '$/functions/rgbToLab.function';
     import {round} from '$/functions/round.function';
     import type {RGBColor} from 'color-diff';
@@ -10,7 +10,7 @@
         background: RGBColor,
     }>();
 
-    const contrast = computed(() => luminanceToContrast(
+    const contrast = computed(() => labToDifference(
         rgbToLab(props.foreground),
         rgbToLab(props.background),
     ));
