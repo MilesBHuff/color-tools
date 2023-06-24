@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import {labToContrast} from '$/functions/labToContrast.function';
     import {labToDifference} from '$/functions/labToDifference.function';
+    import {rgbToContrast} from '$/functions/rgbToContrast.function';
     import {rgbToLab} from '$/functions/rgbToLab.function';
     import {round} from '$/functions/round.function';
     import type {RGBColor} from 'color-diff';
@@ -14,20 +15,35 @@
     const foregroundLab = rgbToLab(props.foreground);
     const backgroundLab = rgbToLab(props.background);
 
-    const useDifference = true;
-    const contrast = computed(() => useDifference
-        ? labToDifference(
-            foregroundLab,
-            backgroundLab,
-        )
-        : labToContrast(
-            foregroundLab,
-            backgroundLab ,
-        )
-    );
-    const contrastDeviance = useDifference
-        ? 8.371755338567073 / 4.54 // The difference between 21-scaled CIEDE2000 and WCAG for 50% RGB gray (#7f7f7f)
-        : 1.92 / 4.54;
+    enum MethodType {
+        WCAG = 0,
+        Lab_WCAG = 1,
+        CIEDE2000 = 2,
+    }
+    const method: MethodType = MethodType.WCAG;
+
+    const contrast = computed(() => {switch(method as MethodType) {
+
+        case MethodType.WCAG:
+            return rgbToContrast(props.foreground, props.background);
+
+        case MethodType.Lab_WCAG:
+            return labToContrast(foregroundLab, backgroundLab);
+
+        case MethodType.CIEDE2000:
+            return labToDifference(foregroundLab, backgroundLab);
+    }});
+    const contrastDeviance = (() => {switch(method as MethodType) {
+
+        case MethodType.WCAG:
+            return 1;
+
+        case MethodType.Lab_WCAG:
+            return 1.92 / 4.54; // The difference between Lab-luminance contrast-ratio and WCAG-luminance contrast-ratio for #767676, the gray closest to a 4.5 CR in WCAG.
+
+        case MethodType.CIEDE2000:
+            return 8.371755338567073 / 4.54; // The difference between 21-scaled CIEDE2000 and WCAG for #767676, the gray closest to a 4.5 CR in WCAG.
+    }})();
 
     interface ThresholdType {
         aa: number,
