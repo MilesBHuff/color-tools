@@ -1,30 +1,32 @@
 <script setup lang="ts">
-    import {computed, defineEmits, reactive} from 'vue';
+    import {stringToRgb} from '@/functions/stringToRgb.function';
+    import type {RgbType} from '@/types/color-models.type';
+    import {computed, reactive} from 'vue';
+
+    interface GroundRefType {
+        raw: string,
+        rgb: RgbType,
+    }
 
     const hexPattern = /^(?:[a-f0-9]{3}|[a-f0-9]{6})$/i;
 
     const isValidHex = (value: string): boolean => hexPattern.test(value);
 
-    interface GroundRefType {
-        raw: string,
-        value: number,
-    }
-
     const setValues = (targetRef: GroundRefType) =>
         (input: string): void => {
             targetRef.raw = input;
             if(hexPattern.test(input)) {
-                targetRef.value = parseInt(input, 16);
+                targetRef.rgb = stringToRgb(input);
             }
         }
 
     const foregroundRef: GroundRefType = reactive({
         raw: '000000',
-        value: 0x000000,
+        rgb: {r: 0x00, g: 0x00, b: 0x00},
     });
     const backgroundRef: GroundRefType = reactive({
         raw: 'ffffff',
-        value: 0xffffff,
+        rgb: {r: 0xff, g: 0xff, b: 0xff},
     });
 
     const foreground = computed({
@@ -46,8 +48,8 @@
             return event.preventDefault();
         }
         emit('submit', {
-            foreground: foregroundRef.value,
-            background: backgroundRef.value,
+            foreground: foregroundRef.rgb,
+            background: backgroundRef.rgb,
         });
     }
 </script>
