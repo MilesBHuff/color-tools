@@ -69,7 +69,7 @@
                 v-model="foreground"
                 maxlength="6"
                 required
-                :class="{'invalid-input': !valid.foreground}"
+                :class="{'invalid': !valid.foreground}"
                 @input="submitHexes"
             />
         </div>
@@ -81,7 +81,7 @@
                 v-model="background"
                 maxlength="6"
                 required
-                :class="{'invalid-input': !valid.background}"
+                :class="{'invalid': !valid.background}"
                 @input="submitHexes"
             />
         </div>
@@ -89,9 +89,6 @@
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
-    .invalid-input {
-        border-color: #f00 !important;
-    }
 
     form {
         display: grid;
@@ -110,22 +107,7 @@
 
             >input {
                 cursor: text;
-
                 width: 6.25ch;
-                padding: 0 0.5ch;
-
-                border-radius: 0.25rem;
-                font-family: monospace;
-
-                color: #000;
-                background-color: #fff;
-                border: 1px solid #7f7f7f;
-
-                &:disabled {
-                    border-color: transparent;
-                    background-color: transparent;
-                    font-weight: bold;
-                }
             }
 
             >span {

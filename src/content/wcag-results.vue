@@ -5,35 +5,35 @@
     import {rgbToLab} from '$/functions/rgbToLab.function';
     import {round} from '$/functions/round.function';
     import type {RGBColor} from 'color-diff';
-    import {computed} from 'vue';
+    import {computed, ref, type Ref} from 'vue';
 
     const props = defineProps<{
         foreground: RGBColor,
         background: RGBColor,
     }>();
 
-    const foregroundLab = rgbToLab(props.foreground);
-    const backgroundLab = rgbToLab(props.background);
+    const foregroundLab = computed(() => rgbToLab(props.foreground));
+    const backgroundLab = computed(() => rgbToLab(props.background));
 
-    enum MethodType {
+    const enum MethodType {
         WCAG = 0,
         Lab_WCAG = 1,
         CIEDE2000 = 2,
     }
-    const method: MethodType = MethodType.WCAG;
+    const method: Ref<MethodType> = ref(MethodType.WCAG);
 
-    const contrast = computed(() => {switch(method as MethodType) {
+    const contrast = computed(() => {switch(method.value) {
 
         case MethodType.WCAG:
             return rgbToContrast(props.foreground, props.background);
 
         case MethodType.Lab_WCAG:
-            return labToContrast(foregroundLab, backgroundLab);
+            return labToContrast(foregroundLab.value, backgroundLab.value);
 
         case MethodType.CIEDE2000:
-            return labToDifference(foregroundLab, backgroundLab);
+            return labToDifference(foregroundLab.value, backgroundLab.value);
     }});
-    const contrastDeviance = (() => {switch(method as MethodType) {
+    const contrastDeviance = computed(() => {switch(method.value) {
 
         case MethodType.WCAG:
             return 1;
@@ -43,29 +43,38 @@
 
         case MethodType.CIEDE2000:
             return 8.371755338567073 / 4.54; // The difference between 21-scaled CIEDE2000 and WCAG for #767676, the gray closest to a 4.5 CR in WCAG.
-    }})();
+    }});
 
     interface ThresholdType {
         aa: number,
         aaa: number,
     }
-    const smallThresholds: ThresholdType= {
-        aa: 4.5 * contrastDeviance,
-        aaa: 7.0 * contrastDeviance,
-    }
-    const largeThresholds: ThresholdType = {
-        aa: 3.0 * contrastDeviance,
-        aaa: 4.5 * contrastDeviance,
-    }
+    const smallThresholds = computed<ThresholdType>(() => ({
+        aa: 4.5 * contrastDeviance.value,
+        aaa: 7.0 * contrastDeviance.value,
+    }));
+    const largeThresholds = computed<ThresholdType>(() => ({
+        aa: 3.0 * contrastDeviance.value,
+        aaa: 4.5 * contrastDeviance.value,
+    }));
 
     const calcScore = (contrast: number, aa: number, aaa: number): string =>
         contrast >= aaa ? 'AAA' : contrast >= aa ? 'AA' : 'Fail';
-    const scoreSmall = computed(() => calcScore(contrast.value, smallThresholds.aa, smallThresholds.aaa));
-    const scoreLarge = computed(() => calcScore(contrast.value, largeThresholds.aa, largeThresholds.aaa));
+    const scoreSmall = computed(() => calcScore(contrast.value, smallThresholds.value.aa, smallThresholds.value.aaa));
+    const scoreLarge = computed(() => calcScore(contrast.value, largeThresholds.value.aa, largeThresholds.value.aaa));
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <form id="results">
+        <div id="method">
+            <label for="method">Method:</label>
+            <select name="method" v-model="method" required>
+                <option :value="MethodType.WCAG">WCAG</option>
+                <option :value="MethodType.Lab_WCAG">Lab WCAG</option>
+                <option :value="MethodType.CIEDE2000">CIEDE2000</option>
+            </select>
+            <span></span>
+        </div>
         <div id="ratio">
             <label for="ratio">Ratio:</label>
             <input name="ratio" disabled :value="round(contrast)"/>
@@ -114,22 +123,7 @@
 
             >input {
                 cursor: text;
-
-                width: 6.25ch;
-                padding: 0 0.5ch;
-
-                border-radius: 0.25rem;
-                font-family: monospace;
-
-                color: #000;
-                background-color: #fff;
-                border: 1px solid #7f7f7f;
-
-                &:disabled {
-                    border-color: transparent;
-                    background-color: transparent;
-                    font-weight: bold;
-                }
+                width: 4.25ch;
             }
 
             >span {
