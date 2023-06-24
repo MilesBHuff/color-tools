@@ -67,6 +67,7 @@
                 :class="{'invalid-input': !foregroundValid}"
                 @input="submitHexes"
             />
+            <span></span>
         </div>
         <div id="background">
             <label for="background">
@@ -79,6 +80,7 @@
                 :class="{'invalid-input': !backgroundValid}"
                 @input="submitHexes"
             />
+            <span></span>
         </div>
     </form>
 </template>

@@ -44,7 +44,7 @@
 
         >#forms {
             display: grid;
-            grid: 'L I';
+            grid: 'L I T';
             gap: 0.5rem 1ch;
             height: min-content;
             width: fit-content;
@@ -72,6 +72,13 @@
                             background-color: transparent;
                             font-weight: bold;
                         }
+                    }
+
+                    >span {
+                        font-family: monospace;
+                        height: 0;
+                        line-height: 1;
+                        text-align: right;
                     }
                 }
             }
