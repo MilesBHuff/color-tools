@@ -1,25 +1,27 @@
 <script setup lang="ts">
-    import HexInput from '$/content/hex-input.vue';
+    import ColorInputs from '$/content/color-inputs.vue';
     import Renderer from '$/content/renderer.vue';
     import WcagResults from '$/content/wcag-results.vue';
+    import {newRGBColor} from '$/types/rgb-color';
     import type {RGBColor} from 'color-diff';
     import {reactive} from 'vue';
 
     const colors = reactive({
-        foreground: {R: 0x00, G: 0x00, B: 0x00} as RGBColor,
-        background: {R: 0xff, G: 0xff, B: 0xff} as RGBColor,
+        foreground: newRGBColor(),
+        background: newRGBColor(),
     });
 
-    const handleSubmission = (data: {foreground: RGBColor, background: RGBColor}) => {
+    const onSubmit = (data: {foreground: RGBColor, background: RGBColor}) => {
         colors.foreground = data.foreground;
         colors.background = data.background;
+        // console.debug('calculator.vue\n', data.foreground, data.background);
     };
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <div id="calculator">
         <div id="input">
-            <HexInput @submit="handleSubmission"/>
+            <ColorInputs @submit="onSubmit"/>
         </div>
         <div id="output">
             <WcagResults :foreground="colors.foreground" :background="colors.background"/>
