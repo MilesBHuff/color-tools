@@ -13,7 +13,7 @@
 
     const inputs: {[key in IdType]: RGBColor} = reactive({
         [IdType.foreground]: newRGBColor(0x00, 0x00, 0x00),
-        [IdType.background]: newRGBColor(0xff, 0xff, 0xff),
+        [IdType.background]: newRGBColor(0xf6, 0xf6, 0xf6),
     });
 
     const emit = defineEmits(['submit']);

@@ -120,12 +120,13 @@
                 text-align: right;
                 cursor: text;
             }
-
+            >select {
+                width: 12.75ch;
+            }
             >input {
                 cursor: text;
                 width: 5.25ch;
             }
-
             >span {
                 font-family: monospace;
                 height: 0;

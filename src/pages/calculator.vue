@@ -20,28 +20,27 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <div id="calculator">
-        <div id="input">
-            <ColorInputs @submit="onSubmit"/>
-        </div>
-        <div id="output">
-            <WCAGResults :foreground="colors.foreground" :background="colors.background"/>
-            <Renderer :foreground="colors.foreground" :background="colors.background"/>
-        </div>
+        <ColorInputs class="card" @submit="onSubmit"/>
+        <Renderer class="card" :foreground="colors.foreground" :background="colors.background"/>
+        <WCAGResults class="card" :foreground="colors.foreground" :background="colors.background"/>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
-
     #calculator {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         gap: 1rem;
         margin: 1rem;
     }
 
-    #output, #input {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    .card {
+        border-radius: 0.25rem;
+        border: 1px solid #767676;
+        background-color: #f6f6f6;
+        padding: 1rem;
+        height: min-content;
+        width: fit-content;
     }
 </style>

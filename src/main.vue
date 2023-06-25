@@ -8,7 +8,7 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" id="styles-global">
     body {
-        background-color: #f6f6f6;
+        background-color: #fff;
     }
 
     input {
@@ -21,7 +21,7 @@
 
         color: #000;
         background-color: #fff;
-        border: 1px solid #7f7f7f;
+        border: 1px solid #767676;
 
         &:disabled {
             border-color: transparent;
