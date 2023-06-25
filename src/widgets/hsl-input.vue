@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {newRGBColor} from '$/types/rgb-color';
+    import {newRGBColor} from '$/functions/new-rgb-color.function';
     import HueInput from '$/widgets/hue-input.vue';
     import SatInput from '$/widgets/sat-input.vue';
     import LumInput from '$/widgets/lum-input.vue';

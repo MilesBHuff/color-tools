@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import ColorInputs from '$/content/color-inputs.vue';
     import Renderer from '$/content/renderer.vue';
-    import WcagResults from '$/content/wcag-results.vue';
-    import {newRGBColor} from '$/types/rgb-color';
+    import WCAGResults from '$/content/wcag-results.vue';
+    import {newRGBColor} from '$/functions/new-rgb-color.function';
     import type {RGBColor} from 'color-diff';
     import {reactive} from 'vue';
 
@@ -24,7 +24,7 @@
             <ColorInputs @submit="onSubmit"/>
         </div>
         <div id="output">
-            <WcagResults :foreground="colors.foreground" :background="colors.background"/>
+            <WCAGResults :foreground="colors.foreground" :background="colors.background"/>
             <Renderer :foreground="colors.foreground" :background="colors.background"/>
         </div>
     </div>

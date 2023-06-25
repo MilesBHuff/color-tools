@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import type {ModelViewPair} from '$/types/types';
+    import type {ModelViewPair} from '$/types/model-view-pair.type';
     import {computed, reactive} from 'vue';
 
     const props = withDefaults(defineProps<{

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {newRGBColor} from '$/types/rgb-color';
+    import {newRGBColor} from '$/functions/new-rgb-color.function';
     import HexInput from '$/widgets/hex-input.vue'
     import HSLInput from '$/widgets/hsl-input.vue'
     import type {RGBColor} from 'color-diff';
