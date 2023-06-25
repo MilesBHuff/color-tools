@@ -88,18 +88,18 @@
             <label for="score-small">Score (Small):</label>
             <input name="score-small" disabled :value="scoreSmall"/>
             <span>
-                AA={{round(smallThresholds.aa)}}
+                AA={{round(smallThresholds.aa, 1).toString(10)}}
                 <br/>
-                AAA={{round(smallThresholds.aaa)}}
+                AAA={{round(smallThresholds.aaa, 1).toString(10)}}
             </span>
         </div>
         <div id="score-large">
             <label for="score-large">Score (Large):</label>
             <input name="score-large" disabled :value="scoreLarge"/>
             <span>
-                AA={{round(largeThresholds.aa)}}
+                AA={{round(largeThresholds.aa, 1).toString(10)}}
                 <br/>
-                AAA={{round(largeThresholds.aaa)}}
+                AAA={{round(largeThresholds.aaa, 1).toString(10)}}
             </span>
         </div>
     </form>
