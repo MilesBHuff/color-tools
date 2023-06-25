@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import {newRGBColor} from '$/types/rgb-color';
     import HexInput from '$/widgets/hex-input.vue'
+    import HSLInput from '$/widgets/hsl-input.vue'
     import type {RGBColor} from 'color-diff';
     import {onMounted, reactive} from 'vue';
 
@@ -33,16 +34,29 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <form @submit.prevent="onSubmit">
-        <HexInput @input="value => onInput(id, value)" v-for="id of ids" :key="id" :id="id" v-model="inputs[id]"/>
+        <div v-for="id of ids" :key="id" >
+            <HexInput class="HexInput" :id="id" @input="value => onInput(id, value)" v-model="inputs[id]"/>
+            <HSLInput class="HSLInput" :id="id"/>
+        </div>
     </form>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
     form {
         display: grid;
-        grid: 'L I';
+        grid-template-columns: min-content 1fr;
         gap: 0.5rem 1ch;
         height: min-content;
         width: fit-content;
+
+        >div {
+            display: contents;
+            >div.HexInput {
+                display: contents;
+            }
+            >div.HSLInput {
+                grid-column: span 2;
+            }
+        }
     }
 </style>

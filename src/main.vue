@@ -11,6 +11,9 @@
         background-color: #f6f6f6;
     }
 
+    input {
+        text-align: right;
+    }
     input, select {
         padding: 0 0.5ch;
         border-radius: 0.25rem;

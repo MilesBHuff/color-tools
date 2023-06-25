@@ -1,0 +1,33 @@
+<script setup lang="ts">
+    import {newRGBColor} from '$/types/rgb-color';
+    import HueInput from '$/widgets/hue-input.vue';
+    import SatInput from '$/widgets/sat-input.vue';
+    import LumInput from '$/widgets/lum-input.vue';
+    import type {RGBColor} from 'color-diff';
+
+    const props = withDefaults(defineProps<{
+        id: string,
+        modelValue?: RGBColor,
+    }>(), {
+        modelValue: () => newRGBColor(),
+    });
+    // const emit = defineEmits(['input']);
+
+    const id = props.id + 'HSL';
+</script>
+<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+<template>
+    <div :id="id">
+        <HueInput :id="props.id"/>
+        <SatInput :id="props.id"/>
+        <LumInput :id="props.id"/>
+    </div>
+</template>
+<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+<style lang="scss" scoped>
+    div {
+        display: flex;
+        flex-direction: row;
+        gap: 1ch;
+    }
+</style>

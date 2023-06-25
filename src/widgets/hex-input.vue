@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import {hexPattern, isValidHex} from '$/functions/is-valid-hex.function';
+    import {isValidHex} from '$/functions/is-valid-hex.function';
     import {rgbToString} from '$/functions/rgbToString.function copy';
     import {stringToRgb} from '$/functions/stringToRgb.function';
     import {newRGBColor} from '$/types/rgb-color';
-    import type {GroundRefType} from '$/types/types';
+    import type {ModelViewPair} from '$/types/types';
     import type {RGBColor} from 'color-diff';
     import {capitalize, computed, reactive} from 'vue';
 
@@ -16,58 +16,57 @@
     const emit = defineEmits(['input']);
 
     const setValues = (input: string): void => {
-        hexRef.raw = input;
-        if(hexPattern.test(input)) {
-            hexRef.rgb = stringToRgb(input);
-            // console.debug('input-hex.vue\n', hexRef.rgb);
-            emit('input', hexRef.rgb);
+        modelRef.view = input;
+        if(modelValid) {
+            modelRef.model = stringToRgb(input);
+            // console.debug('hex-input.vue\n', modelRef.model);
+            emit('input', modelRef.model);
         }
     };
 
-    const hexRef: GroundRefType = reactive({
-        rgb: props.modelValue,
-        raw: rgbToString(props.modelValue),
+    const modelRef: ModelViewPair<RGBColor> = reactive({
+        model: props.modelValue,
+        view: rgbToString(props.modelValue),
     });
-    const hex = computed({
-        get: () => hexRef.raw,
+    const model = computed({
+        get: () => modelRef.view,
         set: setValues,
     });
-    const hexValid = computed(() =>
-        isValidHex(hex.value)
+    const modelValid = computed(() =>
+        isValidHex(model.value)
     );
+
+    const id = props.id + 'Hex';
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
-    <div :id="props.id">
-        <label :for="props.id">
+    <div :id="id">
+        <label :for="id">
             {{capitalize(props.id) + ':'}}
         </label><input
-            :name="props.id"
-            v-model="hex"
+            :name="id"
+            v-model="model"
             maxlength="6"
             required
-            :class="{'invalid': !hexValid}"
+            :class="{'invalid': !modelValid}"
         />
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
-    div {
-        display: contents;
-
-        >label {
-            text-align: right;
-            cursor: text;
-        }
-        >input {
-            cursor: text;
-            width: 6.25ch;
-        }
-        >span {
-            font-family: monospace;
-            height: 0;
-            line-height: 1;
-            text-align: right;
-        }
+    label {
+        justify-self: flex-start;
+        cursor: text;
+    }
+    input {
+        justify-self: flex-end;
+        cursor: text;
+        width: 6.25ch;
+    }
+    span {
+        font-family: monospace;
+        height: 0;
+        line-height: 1;
+        text-align: right;
     }
 </style>

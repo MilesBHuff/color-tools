@@ -1,6 +1,4 @@
-import type {RGBColor} from "color-diff";
-
-export interface GroundRefType {
-    raw: string,
-    rgb: RGBColor,
+export interface ModelViewPair<T> {
+    view: string,
+    model: T,
 }
