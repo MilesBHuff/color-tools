@@ -21,10 +21,11 @@
 <style lang="scss" scoped>
     #renderer {
         padding: 2rem;
+        justify-content: center;
 
         background-color: #fff;
         color: #000;
-        border-color: #000;
+        border: 1px solid #000;
 
         display: flex;
         flex-direction: column;

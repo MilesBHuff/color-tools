@@ -7,12 +7,27 @@
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" id="styles-global">
+    * {
+        white-space: nowrap;
+    }
+
     body {
         background-color: #fff;
+        background: linear-gradient(rgba($color: #fff, $alpha: 0.5), rgba($color: #fff, $alpha: 0.5)), url('https://giomjava.files.wordpress.com/2011/06/stripesgnome.jpg'); //TODO:  Use something custom.
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        width: 100vw;
     }
 
     input {
         text-align: right;
+        box-shadow: 0 0 0.125rem #000 inset;
+    }
+    select {
+        cursor: pointer;
+        box-shadow: 0 0 0.125rem #000;
     }
     input, select {
         padding: 0 0.5ch;
@@ -21,7 +36,7 @@
 
         color: #000;
         background-color: #fff;
-        border: 1px solid #767676;
+        border: 0px solid transparent;
 
         &:disabled {
             border-color: transparent;

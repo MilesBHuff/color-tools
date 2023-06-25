@@ -37,10 +37,8 @@
 
     .card {
         border-radius: 0.25rem;
-        border: 1px solid #767676;
-        background-color: #f6f6f6;
+        background-color: rgba($color: #fff, $alpha: 0.8);
         padding: 1rem;
-        height: min-content;
-        width: fit-content;
+        box-shadow: 0 0 0.125rem #000;
     }
 </style>
