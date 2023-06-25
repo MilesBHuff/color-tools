@@ -37,7 +37,7 @@
 <template>
     <div :id="id">
         <label :for="id">
-            L:
+            L*:
         </label><input
             :name="id"
             v-model="model"
@@ -49,7 +49,12 @@
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
+    label {
+        font-family: monospace;
+        margin-left: 1ch;
+        cursor: text;
+    }
     input {
-        width: 3.25ch
+        width: 3.25ch;
     }
 </style>

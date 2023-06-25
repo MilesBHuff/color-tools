@@ -49,6 +49,11 @@
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
+    label {
+        font-family: monospace;
+        margin-left: 1ch;
+        cursor: text;
+    }
     input {
         width: 3.25ch
     }

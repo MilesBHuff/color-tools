@@ -28,6 +28,6 @@
     div {
         display: flex;
         flex-direction: row;
-        gap: 1ch;
+        // gap: 0.5ch;
     }
 </style>
