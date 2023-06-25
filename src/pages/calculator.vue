@@ -20,22 +20,31 @@
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>
     <div id="calculator">
-        <ColorInputs class="card" @submit="onSubmit"/>
         <Renderer class="card" :foreground="colors.foreground" :background="colors.background"/>
-        <WCAGResults class="card" :foreground="colors.foreground" :background="colors.background"/>
+        <div id="forms">
+            <ColorInputs class="card" @submit="onSubmit"/>
+            <WCAGResults class="card" :foreground="colors.foreground" :background="colors.background"/>
+        </div>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <style lang="scss" scoped>
     #calculator {
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
+        flex-direction: column;
         gap: 1rem;
 
         justify-content: center;
         align-items: center;
         height: 100%;
+    }
+    #forms {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 1rem;
+
+        justify-content: center;
     }
 
     .card {
