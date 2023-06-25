@@ -17,6 +17,7 @@
 
     const setValues = (input: string): void => {
         modelRef.view = input;
+        modelValid = isValidHex(model.value);
         if(modelValid) {
             modelRef.model = stringToRgb(input);
             // console.debug('hex-input.vue\n', modelRef.model);
@@ -32,9 +33,7 @@
         get: () => modelRef.view,
         set: setValues,
     });
-    const modelValid = computed(() =>
-        isValidHex(model.value)
-    );
+    let modelValid = isValidHex(model.value);
 
     const id = props.id + 'Hex';
 </script>
