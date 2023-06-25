@@ -11,14 +11,20 @@
         white-space: nowrap;
     }
 
+    html {
+        height: 100%;
+        width: 100%;
+    }
     body {
+        height: 100%;
+        width: 100%;
+        margin: unset;
+
         background-color: #fff;
         background: linear-gradient(rgba($color: #fff, $alpha: 0.5), rgba($color: #fff, $alpha: 0.5)), url('https://giomjava.files.wordpress.com/2011/06/stripesgnome.jpg'); //TODO:  Use something custom.
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        height: 100vh;
-        width: 100vw;
     }
 
     input {

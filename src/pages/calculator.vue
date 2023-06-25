@@ -32,7 +32,10 @@
         flex-wrap: wrap;
         flex-direction: row;
         gap: 1rem;
-        margin: 1rem;
+
+        justify-content: center;
+        align-items: center;
+        height: 100%;
     }
 
     .card {
