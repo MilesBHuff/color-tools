@@ -26,6 +26,7 @@
         background-color: #fff;
         color: #000;
         border: 1px solid #000;
+        box-shadow: none;
 
         display: flex;
         flex-direction: column;
