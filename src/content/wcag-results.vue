@@ -77,7 +77,9 @@
         </div>
         <div id="ratio">
             <label for="ratio">Ratio:</label>
-            <input name="ratio" disabled :value="round(contrast)"/>
+            <span class="input-wrapper">
+                <input name="ratio" disabled :value="round(contrast)"/>:1
+            </span>
             <span>
                 Min=1
                 <br/>
@@ -116,18 +118,19 @@
         >div {
             display: contents;
 
-            >label {
+            label {
                 text-align: right;
                 cursor: text;
             }
-            >select {
+            select {
                 width: 12.75ch;
             }
-            >input {
+            input {
                 cursor: text;
                 width: 5.25ch;
             }
-            >span {
+            >span:not(.input-wrapper) {
+                font-size: calc(1rem * 9/12);
                 font-family: monospace;
                 height: 0;
                 line-height: 1;

@@ -37,14 +37,16 @@
 <template>
     <div :id="id">
         <label :for="id">
-            L*:
-        </label><input
-            :name="id"
-            v-model="model"
-            maxlength="3"
-            required
-            :class="{'invalid': !modelValid}"
-        />
+            L*
+        </label><span class="input-wrapper">
+            <input
+                :name="id"
+                v-model="model"
+                maxlength="3"
+                required
+                :class="{'invalid': !modelValid}"
+            />%
+        </span>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->

@@ -43,13 +43,15 @@
     <div :id="id">
         <label :for="id">
             {{capitalize(props.id) + ':'}}
-        </label><input
-            :name="id"
-            v-model="model"
-            maxlength="6"
-            required
-            :class="{'invalid': !modelValid}"
-        />
+        </label><span class="input-wrapper">
+            #<input
+                :name="id"
+                v-model="model"
+                maxlength="6"
+                required
+                :class="{'invalid': !modelValid}"
+            />
+        </span>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
@@ -58,15 +60,11 @@
         justify-self: flex-start;
         cursor: text;
     }
-    input {
+    .input-wrapper {
         justify-self: flex-end;
+    }
+    input {
         cursor: text;
         width: 6.25ch;
-    }
-    span {
-        font-family: monospace;
-        height: 0;
-        line-height: 1;
-        text-align: right;
     }
 </style>

@@ -38,13 +38,15 @@
     <div :id="id">
         <label :for="id">
             H:
-        </label><input
-            :name="id"
-            v-model="model"
-            maxlength="3"
-            required
-            :class="{'invalid': !modelValid}"
-        />
+        </label><span class="input-wrapper">
+            <input
+                :name="id"
+                v-model="model"
+                maxlength="3"
+                required
+                :class="{'invalid': !modelValid}"
+            />°
+        </span>
     </div>
 </template>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->

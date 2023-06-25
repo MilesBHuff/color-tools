@@ -9,6 +9,7 @@
 <style lang="scss" id="styles-global">
     * {
         white-space: nowrap;
+        font-size: calc(1rem * 11.5/12);
     }
 
     html {
@@ -25,6 +26,12 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+    }
+
+    .input-wrapper {
+        font-family: monospace;
+        display: inline-flex;
+        align-items: center;
     }
 
     input {
