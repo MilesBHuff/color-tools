@@ -57,7 +57,7 @@
             font-weight: bold;
         }
         &.invalid {
-            border-color: #f00 !important;
+            border: 1px solid #f00 !important;
         }
     }
 </style>
