@@ -39,7 +39,7 @@
         <label :for="id">
             S:
         </label><span class="input-wrapper">
-            <input
+            <input v-no-auto-input
                 :name="id"
                 v-model="model"
                 maxlength="3"

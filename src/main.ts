@@ -1,3 +1,7 @@
+import {NoAutoInput} from '$/directives/no-auto-input.directive';
 import Main from '$/main.vue';
 import {createApp} from 'vue';
-createApp(Main).mount('#vue');
+
+const app = createApp(Main);
+app.directive('no-auto-input', NoAutoInput);
+app.mount('#vue');

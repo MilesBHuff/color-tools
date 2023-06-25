@@ -78,7 +78,7 @@
         <div id="ratio">
             <label for="ratio">Ratio:</label>
             <span class="input-wrapper">
-                <input name="ratio" disabled :value="round(contrast)"/>:1
+                <input v-no-auto-input name="ratio" disabled :value="round(contrast)"/>:1
             </span>
             <span>
                 Min=1
@@ -88,7 +88,7 @@
         </div>
         <div id="score-small">
             <label for="score-small">Score (Small):</label>
-            <input name="score-small" disabled :value="scoreSmall"/>
+            <input v-no-auto-input name="score-small" disabled :value="scoreSmall"/>
             <span>
                 AA={{round(smallThresholds.aa, 1).toString(10)}}
                 <br/>
@@ -97,7 +97,7 @@
         </div>
         <div id="score-large">
             <label for="score-large">Score (Large):</label>
-            <input name="score-large" disabled :value="scoreLarge"/>
+            <input v-no-auto-input name="score-large" disabled :value="scoreLarge"/>
             <span>
                 AA={{round(largeThresholds.aa, 1).toString(10)}}
                 <br/>
