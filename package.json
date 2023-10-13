@@ -1,6 +1,6 @@
 {
   "name": "miles-color-tools",
-  "license": "LAGPL3.0-or-later",
+  "license": "LAGPL-3.0-or-later",
   "version": "3.0.0",
   "private": true,
   "scripts": {
