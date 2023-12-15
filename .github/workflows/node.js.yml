@@ -13,6 +13,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: frontend
+
     steps:
     - uses: actions/checkout@v4 ## HTTPS://GitHub.com/actions/checkout
     - uses: actions/setup-node@v4 ## HTTPS://GitHub.com/actions/setup-node
@@ -21,8 +25,5 @@ jobs:
         cache: npm
         cache-dependency-path: frontend/npm-shrinkwrap.json
     - run: npm ci
-      working-directory: frontend
     - run: npm run check
-	  working-directory: frontend
     - run: npm run build
-	  working-directory: frontend
