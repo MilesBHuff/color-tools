@@ -35,7 +35,7 @@
 <template>
     <form @submit.prevent="onSubmit">
         <div v-for="id of ids" :key="id" >
-            <HexInput class="HexInput" :id="id" @input="value => onInput(id, value)" v-model="inputs[id]"/>
+            <HexInput class="HexInput" :id="id" @input="(value: RGBColor) => onInput(id, value)" v-model="inputs[id]"/>
             <HSLInput class="HSLInput" :id="id"/>
         </div>
     </form>
