@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import CalculatorPage from '$/pages/calculator.vue';
+    import CalculatorPage from '@/pages/calculator.vue';
 </script>
 <!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 <template>

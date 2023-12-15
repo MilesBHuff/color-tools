@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import {newRGBColor} from '$/functions/new-rgb-color.function';
-    import HueInput from '$/widgets/hue-input.vue';
-    import SatInput from '$/widgets/sat-input.vue';
-    import LumInput from '$/widgets/lum-input.vue';
+    import {newRGBColor} from '@/functions/new-rgb-color.function';
+    import HueInput from '@/widgets/hue-input.vue';
+    import SatInput from '@/widgets/sat-input.vue';
+    import LumInput from '@/widgets/lum-input.vue';
     import type {RGBColor} from 'color-diff';
 
     const props = withDefaults(defineProps<{

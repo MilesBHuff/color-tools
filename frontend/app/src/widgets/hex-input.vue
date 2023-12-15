@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import {isValidHex} from '$/functions/is-valid-hex.function';
-    import {rgbToString} from '$/functions/rgbToString.function copy';
-    import {stringToRgb} from '$/functions/stringToRgb.function';
-    import {newRGBColor} from '$/functions/new-rgb-color.function';
-    import type {ModelViewPair} from '$/types/model-view-pair.type';
+    import {isValidHex} from '@/functions/is-valid-hex.function';
+    import {rgbToString} from '@/functions/rgbToString.function copy';
+    import {stringToRgb} from '@/functions/stringToRgb.function';
+    import {newRGBColor} from '@/functions/new-rgb-color.function';
+    import type {ModelViewPair} from '@/types/model-view-pair.type';
     import type {RGBColor} from 'color-diff';
     import {capitalize, computed, reactive} from 'vue';
 

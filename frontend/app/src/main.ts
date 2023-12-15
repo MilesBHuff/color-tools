@@ -1,5 +1,5 @@
-import {NoAutoInput} from '$/directives/no-auto-input.directive';
-import Main from '$/main.vue';
+import {NoAutoInput} from '@/directives/no-auto-input.directive';
+import Main from '@/main.vue';
 import {createApp} from 'vue';
 
 const app = createApp(Main);

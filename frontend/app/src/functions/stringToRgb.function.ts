@@ -1,4 +1,4 @@
-import {threeToSix} from '$/functions/threeToSix.function';
+import {threeToSix} from '@/functions/threeToSix.function';
 import type {RGBColor} from 'color-diff';
 
 export const stringToRgb = (input: string): RGBColor => {

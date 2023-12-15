@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import {labToContrast} from '$/functions/labToContrast.function';
-    import {labToDifference} from '$/functions/labToDifference.function';
-    import {rgbToContrast} from '$/functions/rgbToContrast.function';
-    import {rgbToLab} from '$/functions/rgbToLab.function';
-    import {round} from '$/functions/round.function';
+    import {labToContrast} from '@/functions/labToContrast.function';
+    import {labToDifference} from '@/functions/labToDifference.function';
+    import {rgbToContrast} from '@/functions/rgbToContrast.function';
+    import {rgbToLab} from '@/functions/rgbToLab.function';
+    import {round} from '@/functions/round.function';
     import type {RGBColor} from 'color-diff';
     import {computed, ref, type Ref} from 'vue';
 
