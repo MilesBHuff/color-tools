@@ -5,21 +5,21 @@
     "extends": "./node_modules/@vue/tsconfig/tsconfig.dom.json",
     "include": [
         "env.d.ts",
-        "src/**/*",
-        "src/**/*.json",
-        "src/**/*.ts",
-        "src/**/*.vue"
+        "app/src/**/*",
+        "app/src/**/*.json",
+        "app/src/**/*.ts",
+        "app/src/**/*.vue"
     ],
 
     /* https://www.typescriptlang.org/tsconfig */
     "compilerOptions": {
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Type Checking */
+        * Type Checking */
         "allowUnreachableCode": false, // This is not the concern of a compiler -- please use a linter to detect this.
         "allowUnusedLabels": false, // This is not the concern of a compiler -- please use a linter to detect this.
         "alwaysStrict": true,
-        "exactOptionalPropertyTypes": true,
+        "exactOptionalPropertyTypes": false, // This is excessive.  TypeScript should just change `?:` to mean `|void` instead of `|undefined`, and then there's no problem.
         "noFallthroughCasesInSwitch": false, // This is not the concern of a compiler -- please use a linter to detect this.
         "noImplicitAny": true,
         "noImplicitOverride": true,
@@ -33,29 +33,27 @@
         //NOTE:  The strict-mode settings are omitted here, since they are implicit in the above.
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Modules */
+        * Modules */
+        "allowImportingTsExtensions": true,
         "allowUmdGlobalAccess": false,
         "baseUrl": ".",
-        // "module": null,
-        // "moduleResolution": null,
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         // "moduleSuffixes": null,
         "noResolve": false,
         "paths": {
-            "$/*": [
-                "./src/*"
-            ],
-            "#/*": [
-                "./node_modules/*"
+            "@/*": [
+                "./app/src/*"
             ]
         },
         "resolveJsonModule": true,
-        // "rootDir": null,
-        // "rootDirs": null,
-        // "typeRoots": null,
-        // "types": null,
+        // "rootDir": [],
+        // "rootDirs": [],
+        // "typeRoots": [],
+        // "types": [],
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Emit */
+        * Emit */
         // "declaration": null,
         // "declarationDir": null,
         // "declarationMap": null,
@@ -63,44 +61,43 @@
         // "emitBOM": false,
         "emitDeclarationOnly": false,
         "importHelpers": true,
-        "importsNotUsedAsValues": "error",
         // "inlineSourceMap": false,
         // "inlineSources": false,
         // "mapRoot": null,
         "newLine": "LF",
-        // "noEmit": false,
+        "noEmit": true,
         // "noEmitHelpers": false,
         // "noEmitOnError": false,
         // "outDir": "dist",
         // "outFile": null,
-        "preserveConstEnums": false,
-        "preserveValueImports": true,
+        // "preserveConstEnums": false,
         "removeComments": true,
         // "sourceMap": true,
         // "sourceRoot": null,
         "stripInternal": true,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * JavaScript Support */
+        * JavaScript Support */
         "allowJs": true,
         "checkJs": true,
         // "maxNodeModuleJsDepth": 0,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Editor Support */
+        * Editor Support */
         // "disableSizeLimit": false,
         // "plugins": null,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Interop Constraints */
+        * Interop Constraints */
         // "allowSyntheticDefaultImports": false,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "isolatedModules": false,
+        "isolatedModules": true,
         "preserveSymlinks": true,
+        "verbatimModuleSyntax": false,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Backwards Compatibility */
+        * Backwards Compatibility */
         // "charset": "utf-8",
         // "keyofStringsOnly": true,
         // "noImplicitUseStrict": false,
@@ -110,21 +107,22 @@
         "suppressImplicitAnyIndexErrors": false,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Language and Environment */
+        * Language and Environment */
         // "emitDecoratorMetadata": null,
         "experimentalDecorators": true,
         // "jsx": "preserve",
         // "jsxFactory": null,
         // "jsxFragmentFactory": null,
         // "jsxImportSource": null,
-        // "lib": ["ESNext"],
+        "lib": ["ESNext"],
         // "moduleDetection": "auto",
         // "noLib": false,
         // "reactNamespace": null,
-        // "target": "ESNext",
+        "target": "ES2022",
+        "useDefineForClassFields": true,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Compiler Diagnostics */
+        * Compiler Diagnostics */
         // "diagnostics": false,
         // "explainFiles": false,
         // "extendedDiagnostics": false,
@@ -134,7 +132,7 @@
         // "traceResolution": false,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Projects */
+        * Projects */
         "composite": true,
         // "disableReferencedProjectLoad": false,
         // "disableSolutionSearching": false,
@@ -143,21 +141,21 @@
         // "tsBuildInfoFile": null,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Output Formatting */
+        * Output Formatting */
         "noErrorTruncation": false,
         "preserveWatchOutput": false,
         "pretty": true,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Completeness */
+        * Completeness */
         // "skipDefaultLibCheck": false,
         // "skipLibCheck": true,
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Command Line */
+        * Command Line */
 
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-         * Watch Options */
+        * Watch Options */
         "assumeChangesOnlyAffectDirectDependencies": false
     }
 }

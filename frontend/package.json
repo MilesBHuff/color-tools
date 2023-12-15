@@ -1,8 +1,38 @@
 {
-  "name": "miles-color-tools",
-  "license": "LAGPL-3.0-or-later",
+  "name": "color-tools",
   "version": "3.0.0",
+  "license": "LAGPL-3.0-or-later",
+  "description": "Some tools to help people manipulate colors for use in UI applications.",
+  "keywords": [
+    "color",
+    "Lab",
+    "L*a*b*",
+    "CIELAB",
+    "CIEDE2000",
+    "RGB",
+    "WCAG",
+    "AA",
+    "AAA",
+    "accessibility"
+  ],
+  "author": {
+    "name": "Miles B Huff",
+    "email": "MilesBHuff@NoReply.GitHub.com"
+  },
+  "homepage": "HTTPS://GitHub.com/MilesBHuff/color-tools#README",
+  "bugs": {
+    "url": "HTTPS://GitHub.com/MilesBHuff/color-tools/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+HTTPS://GitHub.com/MilesBHuff/color-tools.git"
+  },
   "private": true,
+  "directories": {
+    "bin": "./dist",
+    "lib": "./app"
+  },
+  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite",

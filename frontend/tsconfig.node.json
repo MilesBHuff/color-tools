@@ -1,6 +1,6 @@
 {
     "extends": [
-        "./node_modules/@vue/tsconfig/tsconfig.json"
+        "@vue/tsconfig/tsconfig.json"
     ],
     "include": [
         "vite.config.*",
@@ -9,7 +9,11 @@
         "playwright.config.*"
     ],
     "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
         "composite": true,
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "skipLibCheck": true,
         "types": [
             "node"
         ]
