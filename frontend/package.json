@@ -56,7 +56,7 @@
     "color-diff": "^1",
     "sass": "^1",
     "tslib": "^2",
-    "typescript": "~5.2",
+    "typescript": "^5",
     "vite": "^4",
     "vue-tsc": "^1"
   }
