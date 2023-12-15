@@ -19,9 +19,9 @@ jobs:
 
     steps:
     - name: Check out code
-	    uses: actions/checkout@v4 ## HTTPS://GitHub.com/actions/checkout
+      uses: actions/checkout@v4 ## HTTPS://GitHub.com/actions/checkout
     - name: Set up Node.js
-	    uses: actions/setup-node@v4 ## HTTPS://GitHub.com/actions/setup-node
+      uses: actions/setup-node@v4 ## HTTPS://GitHub.com/actions/setup-node
       with:
         node-version-file: frontend/.nvmrc
         cache: npm
