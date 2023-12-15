@@ -12,7 +12,7 @@ export default defineConfig({
         outDir: '../dist',
         rollupOptions: {
             input: {
-                app: 'src/index.html',
+                app: 'app/index.html',
             },
         },
         sourcemap: true,
